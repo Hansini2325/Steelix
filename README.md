@@ -43,23 +43,19 @@ The system is designed as a research and demonstration tool. The inspection deci
 
 ## Screenshots
 
-> Add screenshots below after running the dashboard. Replace the placeholder paths with actual image paths.
-
 **Dashboard — Home / Live Inference**
-
-<!-- ![Dashboard home](docs/screenshots/dashboard_home.png) -->
+<img width="959" height="506" alt="Screenshot 2026-09-30 211025" src="https://github.com/user-attachments/assets/f27c4ead-5857-4096-90c5-c9772d294455" />
+<img width="956" height="503" alt="Screenshot 2026-09-30 211511" src="https://github.com/user-attachments/assets/82f2bf03-0052-4284-b42b-7f7e0fe47d62" />
 
 **Defect Analytics — Heatmap View**
-
-<!-- ![Heatmap](docs/screenshots/heatmap.png) -->
+<img width="953" height="497" alt="Screenshot 2026-09-30 211553" src="https://github.com/user-attachments/assets/1d3b8529-9dbe-4d51-8bb2-78f3e9bfd520" />
 
 **Digital Steel Passport**
-
-<!-- ![Passport](docs/screenshots/passport.png) -->
+<img width="956" height="501" alt="Screenshot 2026-09-30 211527" src="https://github.com/user-attachments/assets/d21fefc7-9a37-43d4-aa8a-c23acc753fa8" />
 
 **Training Metrics**
+<img width="956" height="365" alt="Screenshot 2026-09-30 211607" src="https://github.com/user-attachments/assets/870e7d3e-bb5e-4089-a83b-6f39e9d39aee" />
 
-<!-- ![Training curves](docs/screenshots/training_curves.png) -->
 
 ---
 
