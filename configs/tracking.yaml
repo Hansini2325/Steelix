@@ -1,0 +1,58 @@
+# ============================================================
+# configs/tracking.yaml
+# Defect Tracking & Recurrence Configuration
+# ============================================================
+
+# Tracker selection — options: bytetrack, botsort
+tracker: bytetrack
+
+# ByteTrack parameters
+bytetrack:
+  track_high_thresh: 0.50    # High detection threshold
+  track_low_thresh: 0.10     # Low detection threshold
+  new_track_thresh: 0.60     # New track minimum confidence
+  track_buffer: 30           # Max frames to keep lost tracks
+  match_thresh: 0.80         # IoU threshold for track matching
+
+# BoT-SORT parameters (used when tracker = botsort)
+botsort:
+  track_high_thresh: 0.50
+  track_low_thresh: 0.10
+  new_track_thresh: 0.60
+  track_buffer: 30
+  match_thresh: 0.80
+  proximity_thresh: 0.50
+  appearance_thresh: 0.25
+  with_reid: false
+
+# Recurrence detection thresholds
+recurrence:
+  # Minimum number of UNIQUE tracked defects in the same class
+  # within the time window before triggering a pattern event
+  min_unique_occurrences: 3
+
+  # Time window (seconds) within which unique defects are counted
+  time_window_seconds: 60
+
+  # Spatial concentration: fraction of unique defects that must
+  # be in the SAME 3×3 grid region to trigger spatial pattern
+  spatial_concentration_threshold: 0.60
+
+  # Cooldown (seconds) between repeated alerts for the same class+region
+  alert_cooldown_seconds: 30
+
+# Unique defect ID display format
+# Available tokens: {class_name_upper}, {track_id:04d}
+track_id_format: "{class_name_upper}-{track_id:04d}"
+
+# Low-confidence flag threshold (for analytics)
+low_confidence_threshold: 0.35
+
+# Timeline event types (informational)
+event_types:
+  - inspection_started
+  - defect_first_observed
+  - pattern_detected
+  - low_confidence_event
+  - status_change
+  - inspection_completed

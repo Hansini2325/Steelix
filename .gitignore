@@ -1,0 +1,81 @@
+# ── Python ──────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+.Python
+
+# ── Virtual Environments ─────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+.env
+*.egg-info/
+dist/
+build/
+
+# ── Datasets (never commit raw data) ────────────────────────
+data/raw/
+data/interim/
+data/processed/
+*.zip
+*.tar.gz
+*.tar
+*.7z
+
+# ── Model Weights (too large) ────────────────────────────────
+models/*.pt
+models/*.pth
+models/*.onnx
+models/*.engine
+models/*.trt
+!models/README.md
+
+# ── Training Artifacts ───────────────────────────────────────
+runs/
+wandb/
+mlruns/
+lightning_logs/
+
+# ── Results (generated) ──────────────────────────────────────
+results/predictions/
+results/benchmarks/*.json
+results/experiments/*.csv
+!results/figures/README.md
+!results/predictions/README.md
+
+# ── Jupyter Notebooks (outputs) ──────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ── IDE / Editor ─────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Secrets / Credentials ────────────────────────────────────
+.env
+.env.*
+!.env.example
+.env.local
+*.key
+*.pem
+secrets.yaml
+secrets.json
+
+# ── Misc ─────────────────────────────────────────────────────
+*.log
+*.tmp
+tmp/
+temp/
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+dist/

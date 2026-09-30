@@ -1,0 +1,61 @@
+# ============================================================
+# configs/inspection_rules.yaml
+# Inspection Status Decision-Support Rules
+# ============================================================
+#
+# IMPORTANT: These rules are DEMONSTRATION / DECISION-SUPPORT only.
+# This system does NOT constitute a certified industrial quality-control
+# decision. All statuses must be reviewed by a qualified human operator.
+# ============================================================
+
+# Available statuses: PASS | REVIEW | FLAGGED
+
+rules:
+
+  # Status: FLAGGED
+  # Triggered when any of these conditions are met
+  flag_conditions:
+    # Any detection with confidence >= this triggers FLAGGED
+    - type: high_confidence_detection
+      threshold: 0.80
+      description: "High-confidence defect detected (≥ 80%)"
+
+    # If ANY defect class reaches this count
+    - type: max_detections_per_class
+      threshold: 10
+      description: "Excessive detections of a single class"
+
+    # Recurring pattern with many unique occurrences
+    - type: recurring_pattern_occurrences
+      threshold: 10
+      description: "Recurring defect pattern with ≥ 10 unique occurrences"
+
+  # Status: REVIEW
+  # Triggered when flag conditions are NOT met, but any review condition is
+  review_conditions:
+    - type: any_detection_above_conf
+      threshold: 0.40
+      description: "Defect detected with confidence ≥ 40%"
+
+    - type: low_confidence_count
+      threshold: 3
+      description: "Multiple low-confidence detections require verification"
+
+    - type: recurring_pattern_occurrences
+      threshold: 3
+      description: "Recurring defect pattern detected"
+
+    - type: spatial_concentration
+      description: "Defects concentrated in a single region"
+      concentration_threshold: 0.70
+
+  # Status: PASS
+  # Default when no review or flag conditions are met
+  pass_condition:
+    description: "No defects above threshold detected"
+
+# Low-confidence threshold definition
+low_confidence_threshold: 0.35
+
+# If no detections at all → PASS
+empty_detection_status: PASS

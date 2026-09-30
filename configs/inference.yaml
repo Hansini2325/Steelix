@@ -1,0 +1,51 @@
+# ============================================================
+# configs/inference.yaml
+# Inference & Deployment Configuration
+# ============================================================
+
+# ── Default Model ────────────────────────────────────────────
+weights: models/best.pt    # Path to trained weights (.pt, .onnx, .engine)
+
+# ── Detection Thresholds ─────────────────────────────────────
+conf_threshold: 0.30       # Minimum confidence to show a detection
+iou_threshold: 0.45        # NMS IoU threshold
+
+# ── Input ────────────────────────────────────────────────────
+imgsz: 640                 # Inference image size (pixels)
+device: ""                 # "" = auto-detect
+
+# ── Output ───────────────────────────────────────────────────
+output_dir: results/predictions
+save_annotated: true
+save_txt: false            # Save YOLO-format label files alongside predictions
+
+# ── Webcam ───────────────────────────────────────────────────
+camera_index: 0            # OpenCV camera index (0 = default webcam)
+display_fps: true
+display_latency: true
+
+# ── Inspection Decision Layer (demo only) ────────────────────
+# This is a DEMONSTRATION decision-support layer.
+# It is NOT a certified industrial quality-control system.
+inspection_enabled: true
+inspection_conf_threshold: 0.40  # Flag if any detection exceeds this confidence
+flag_classes: []                  # [] = flag any detected class; list class indices to restrict
+
+# ── ONNX Runtime ─────────────────────────────────────────────
+onnx_providers:
+  - CPUExecutionProvider          # Add CUDAExecutionProvider for GPU ONNX-RT
+
+# ── Benchmark ────────────────────────────────────────────────
+warmup_iterations: 10
+benchmark_iterations: 100
+benchmark_input_size: [1, 3, 640, 640]
+
+# ── Visualization ────────────────────────────────────────────
+bbox_thickness: 2
+font_scale: 0.6
+show_confidence: true
+show_class_name: true
+show_latency_overlay: true
+
+# Class colours (RGB) — one per class; auto-generated if empty
+class_colors: []

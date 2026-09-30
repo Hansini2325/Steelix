@@ -1,0 +1,48 @@
+# ============================================================
+# configs/dataset.yaml
+# NEU-DET Dataset Configuration
+# ============================================================
+
+# Dataset identity
+dataset_name: NEU-DET
+dataset_version: "1.0"
+description: "NEU Surface Defect Database — 6 steel surface defect classes"
+
+# Root data directories (relative to project root)
+raw_dir: data/raw
+interim_dir: data/interim
+processed_dir: data/processed
+
+# Expected dataset layout inside data/raw/
+# NEU-DET typically arrives in one of these layouts — the code will auto-detect:
+#   Layout A (detection):  NEU-DET/images/<class>/*.jpg   + NEU-DET/ANNOTATIONS/*.xml
+#   Layout B (classification):  NEU-DET/<class>/*.bmp
+#   Layout C (flat):  NEU-DET/images/*.jpg   +  NEU-DET/labels/*.txt
+auto_detect_layout: true
+
+# Class definitions (MUST match annotation class indices)
+nc: 6
+names:
+  0: crazing
+  1: inclusion
+  2: patches
+  3: pitted_surface
+  4: rolled_in_scale
+  5: scratches
+
+# Image extensions to search for
+image_extensions: [".jpg", ".jpeg", ".png", ".bmp", ".tiff"]
+
+# Annotation extensions to search for
+annotation_extensions: [".xml", ".json", ".txt"]
+
+# Data split ratios (must sum to 1.0)
+train_ratio: 0.80
+val_ratio:   0.10
+test_ratio:  0.10
+
+# Reproducibility seed for splitting
+split_seed: 42
+
+# Path written after prepare_dataset.py completes (used by training)
+yolo_dataset_yaml: data/processed/neu_det.yaml
